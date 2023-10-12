@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active{
+    border: 2px solid white;
+}
+.swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet{
+    background: #660B7F;
+    width: 0.9rem;
+    height: 0.9rem;
+}
+
+
+div{
+    font-family: 'IBM Plex Sans', sans-serif;
+}
