@@ -7,10 +7,9 @@ import CheckOut from '../checkout/CheckOut';
 import Layout from 'antd/es/layout/layout';
 
 const Cart = ({ cart, setCart, onClose }) => {
-  console.log(cart);
   const [count, setCount] = useState(1);
   const deleteHandler = (itemId) => {
-    const updatedCart = cart.filter((cartItem) => cartItem.id !== itemId);
+    const updatedCart = cart?.filter((cartItem) => cartItem.id !== itemId);
     setCart(updatedCart);
   };
 
@@ -34,20 +33,20 @@ const Cart = ({ cart, setCart, onClose }) => {
   };
 
   let total = 0;
-  cart.map((cartItems) => {
+  cart?.map((cartItems) => {
     const subtotal = cartItems.price * count[cartItems.id] || cartItems.price;
     total += subtotal;
   });
 
   let totalCartItems = 0
-  cart.map((cartItems) => {
+  cart?.map((cartItems) => {
     const totalCount = count[cartItems.id] ||  1
     totalCartItems += totalCount 
 })
 
   return (
     <>
-      <div className="absolute h-full animate-[zoomIn_1s] overflow-hidden w-full top-0 right-0 bg-white p-5 z-20 shadow-md">
+      <div className=" absolute h-full animate-[zoomIn_1s] overflow-hidden w-full top-0 right-0 bg-white p-5 z-20 shadow-md">
         <header className="w-full flex justify-around">
           <h2 className="text-[2rem] font-bold">Cart</h2>
           <p className="flex  ">
@@ -69,7 +68,7 @@ const Cart = ({ cart, setCart, onClose }) => {
                 <th className='border'>Subtotal</th>
                 <th className='border '></th>
 
-              {cart.map((cartItems) => (
+              {cart?.map((cartItems) => (
                 <tbody key={cartItems.id}>
                   <td className=" text-center sm:p-0 border  ">
                     <img src={cartItems.src} className="w-[9rem] m-auto sm:w-[3rem]" alt="" />

@@ -8,9 +8,12 @@ const searchHandler = (e)=>{
   
 
 const [cart, setCart] = useState([]);
+const [home, setHome] = useState(true)
+
 
 const addToCart = (id, image, name, price)=>{
   setCartVisible(!cartVisible);
+  setHome(!home)
      const item = {
       id: id,
       src: image,
@@ -22,7 +25,7 @@ const addToCart = (id, image, name, price)=>{
 
 
 
-return { addToCart, cart, setCart, cartVisible, searchTerm, searchHandler};
+return { addToCart, cart, home, setHome, setCart, cartVisible, searchTerm, searchHandler};
 };
 
 export default useCartCount;

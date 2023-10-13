@@ -7,6 +7,7 @@ import ProductDetails from './pages/product-details/product-details'
 import ProductByCategory from './pages/category/productsByCategory'
 import ProtectedRoutes from './protected-routes'
 import CheckOut from './pages/checkout/CheckOut'
+import Cart from './pages/cart/Cart'
 
 const App = () => {
   const isLoggedIn = () => {
@@ -18,6 +19,7 @@ const App = () => {
   }
   
   return (
+    <>
     <Routes>
       <Route element={<Layout/>}>
         <Route
@@ -38,6 +40,13 @@ const App = () => {
               <ProductByCategory />
           }
         />
+                <Route
+          path='/cart'
+          element={
+            <ProtectedRoutes isLoggedIn={isLoggedIn()}>
+            <Cart/>
+            </ProtectedRoutes>
+          } />
         <Route
           path='/checkout'
           element={
@@ -47,6 +56,7 @@ const App = () => {
           } />
       </Route>
       <Route path="/login" element={<Login/>} />
+      
       <Route
         path="*"
         element={
@@ -56,6 +66,8 @@ const App = () => {
         }
       />
     </Routes>
+      
+    </>
   );
 }
 

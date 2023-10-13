@@ -10,14 +10,11 @@ const Dashboard = () => {
      {loading? (
       ""
      ): (
-       <h1 className=" text-[2rem] m-[2rem]">Shop</h1>
-     )
-
-    }
-    <PageProductsView
-      pageTitle="Dashboard | BEND DOWN SELECT"
-      pageApiUrl="products"
-    />
+<h1 className=" text-[2rem] m-[2rem]">Shop</h1> )}
+<PageProductsView
+  pageTitle="Dashboard | BEND DOWN SELECT"
+  pageApiUrl="products"
+/>
     </div>
   );
 };

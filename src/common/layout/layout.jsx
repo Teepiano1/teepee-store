@@ -5,7 +5,7 @@ import { Input } from 'antd';
 import useCartCount from '../../hooks/useCartCount';
 import menu from '../../assets/icons/menu.svg'
 
-const Layout = ({totalCartItems}) => {
+const Layout = () => {
   const { data } = useProductData('products/categories');
   const { searchTerm, searchHandler } = useCartCount();
   
@@ -22,8 +22,8 @@ const Layout = ({totalCartItems}) => {
         <img src={menu} alt="" onClick={handleMenuClick} className='xl:hidden ml-[5rem]' />
         <Input className='border  right-52 rounded-[0.5rem] w-[18rem] sm:hidden' placeholder='search items' onChange={searchHandler} />
       </header>
-      <main className=" grid grid-cols-[13rem_1fr] sm:grid-cols-1  overflow-hidden">
-        <aside className={`shadow-m overflow-auto sm:animate-[slideInDown_0.5s] sm:text-white sm:bg-[#380C65] sm:${asideVisible ? 'visible' : 'hidden'}`}>
+      <main className=" grid grid-cols-[13rem_1fr] sm:grid-cols-[1fr_0rem]  overflow-hidden">
+        <aside className={`shadow-m overflow-auto sm:animate-[slideInLeft_0.5s] sm:text-white sm:bg-[#380C65] sm:${asideVisible ? 'visible' : 'hidden'}`}>
           <div className="p-5">
             <NavLink
               className={({ isActive }) => {
