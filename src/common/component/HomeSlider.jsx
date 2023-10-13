@@ -10,15 +10,36 @@ import 'swiper/css/autoplay';
 import { useNavigate } from 'react-router-dom';
 
 const HomeSlider = () => {
-  const { data } = useProductData(`products`);
+  const { data } = useProductData(`products/category/smartphones`);
   const navigate = useNavigate();
+
+  const [slidesPerView, setSlidesPerView] = useState(2);
+
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 758) {
+        setSlidesPerView(1);
+      } else {
+        setSlidesPerView(2);
+      }
+    };
+
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
 
   return (
     <Swiper
       className={`flex justify-center bg-black max-h-[15rem] max-w-[40rem] m-[1rem]`}
       modules={[Pagination, Autoplay]}
       spaceBetween={40}
-      slidesPerView={1}
+      slidesPerView={slidesPerView}
+      pagination={true}
       autoplay={true}
     >
       {data &&
