@@ -14,20 +14,20 @@ const HomeSlider = () => {
   const navigate = useNavigate();
   const [slidesPerView, setSlidesPerView] = useState(2);
 
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     if (window.innerWidth <= 758) {
-  //       setSlidesPerView(1);
-  //     } else {
-  //       setSlidesPerView(2);
-  //     }
-  //   };
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 758) {
+        setSlidesPerView(1);
+      } else {
+        setSlidesPerView(2);
+      }
+    };
 
-  //   window.addEventListener('resize', handleResize);
-  //   return () => {
-  //     window.removeEventListener('resize', handleResize);
-  //   };
-  // }, []);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <Swiper
