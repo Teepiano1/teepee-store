@@ -10,7 +10,7 @@ import 'swiper/css/autoplay';
 import { useNavigate } from 'react-router-dom';
 
 const HomeSlider = () => {
-  const { data } = useProductData(`products/category/smartphones`);
+  const { data } = useProductData(`products`);
   const navigate = useNavigate();
 
   return (
@@ -19,7 +19,6 @@ const HomeSlider = () => {
       modules={[Pagination, Autoplay]}
       spaceBetween={40}
       slidesPerView={1}
-      pagination={true}
       autoplay={true}
     >
       {data &&
