@@ -8,24 +8,27 @@ import Cart from "../../pages/cart/Cart";
 import Search from "antd/es/input/Search";
 import { Footer } from "antd/es/layout/layout";
 
-const PageProductsView = (props) => {
-  const { data, loading } = useProductData(props.pageApiUrl);
+const PageProductsView = ({pageApiUrl, pageTitle}) => {
+  const { data, loading } = useProductData(pageApiUrl);
 
   useLayoutEffect(() => {
-    document.title = props.pageTitle;
-  }, [props.pageTitle]);
+    document.title = pageTitle;
+  }, [pageTitle]);
 
   const navigate = useNavigate();
   const [cartVisible, setCartVisible] = useState(false);
-  const { addToCart, cart, setCart, home, setHome, cartItemCount, setcartItemCount, searchTerm, searchHandler } = useCartCount(cartVisible, setCartVisible)
+  const { addToCart, cart, setCart, home, setHome, searchTerm, searchHandler} = useCartCount(cartVisible, setCartVisible)
   const closeHandler = () => {
     setCartVisible(!cartVisible)
     setHome(true)
   }
+  const cartHandler = (item)=> {
+    addToCart(item.id, item.thumbnail, item.title, item.price)
+  }
   return (
     <div className="flex flex-col h-full">
       {cartVisible && (<div>
-        <Cart onClose={closeHandler} cartItemCount={cartItemCount} cart={cart} setCart={setCart} setcartItemCount={setcartItemCount} />
+        <Cart onClose={closeHandler} cart={cart} setCart={setCart}/>
       </div>
       )}
       {loading ? (
@@ -34,7 +37,7 @@ const PageProductsView = (props) => {
         {home && (
           <div className="flex items-center justify-center h-full  ">
             <section className="flex items-center  gap-x-5 gap-y-16 justify-between flex-wrap h-full">
-              <Search className="w-[17rem] xl:hidden" placeholder="what are you looking for?" onChange={searchHandler} />
+              <Search className="w-[17rem] xl:hidden " placeholder="what are you looking for?" onChange={searchHandler} />
               {data &&
                 data.products?.filter((item) =>
                   item.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -43,16 +46,15 @@ const PageProductsView = (props) => {
                     <div key={index} className="w-[14rem] h-[18rem]  relative sm:max-w-[46%] md:h-[14rem] bg-white rounded-md">
                       <p className=" absolute right-[0rem] text-white rounded-md bg-purple-600">{item.discountPercentage}% off</p>
                       <img src={item.thumbnail} onClick={() => navigate(`/single-product/${item.id}`)}
-                        className="h-[60%] w-[14rem] rounded-md cursor-pointer" alt="" />
+                        className="h-[50%] w-[14rem] rounded-md cursor-pointer" alt="" />
                       <div className="flex flex-col justify-between pt-[0.5rem] leading-6">
-                        <p>{item.title}</p>
+                        <p className=" sm:w-[9rem] sm:overflow-hidden sm:text-ellipsis sm:whitespace-nowrap">{item.title}</p>
                         <p className="text-[#380C65]">${item.price}</p>
                       </div>
                       <div className=" flex flex-col">
-                        {/* <Link to='/cart'> */}
                         <Button
                           className="w-full absolute  bottom-0 bg-[#380C65] shadow-md hover:scale-90 hover:transition-all text-white font-semibold rounded-md py-1"
-                          onClick={() => addToCart(item.id, item.thumbnail, item.title, item.price)}>
+                          onClick={()=> cartHandler(item)}>
                           Add to Cart</Button>
                       </div>
                     </div>

@@ -25,7 +25,9 @@ const addToCart = (id, image, name, price)=>{
 
 
 
-return { addToCart, cart, home, setHome, setCart, cartVisible, searchTerm, searchHandler};
+return { addToCart, cart, home, setHome,
+   setCart, cartVisible, searchTerm,
+   searchHandler};
 };
 
 export default useCartCount;

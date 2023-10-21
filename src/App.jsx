@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Login from './pages/Auth/login'
 import Dashboard from './pages/dashboard/dashboard'
-import Layout from './common/layout/layout'
+import CustomLayout from './common/layout/layout'
 import ProductDetails from './pages/product-details/product-details'
 import ProductByCategory from './pages/category/productsByCategory'
 import ProtectedRoutes from './protected-routes'
@@ -21,7 +21,7 @@ const App = () => {
   return (
     <>
     <Routes>
-      <Route element={<Layout/>}>
+      <Route element={<CustomLayout/>}>
         <Route
           path="/"
           element={

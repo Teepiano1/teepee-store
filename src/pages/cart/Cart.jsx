@@ -1,18 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from 'antd';
 import cartIcn from '../../assets/icons/cart.png';
 import DeleteIcn from '../../assets/icons/delete.png';
 import 'animate.css';
 import CheckOut from '../checkout/CheckOut';
-import Layout from 'antd/es/layout/layout';
 
-const Cart = ({ cart, setCart, onClose }) => {
+const Cart = ({ cart, setCart, onClose}) => {
   const [count, setCount] = useState(1);
-  const deleteHandler = (itemId) => {
-    const updatedCart = cart?.filter((cartItem) => cartItem.id !== itemId);
-    setCart(updatedCart);
-  };
-
+  
   const [checkOut, setCheckOut] = useState(false);
   const handleCheckOut = () => {
     setCheckOut(!checkOut);
@@ -44,9 +39,30 @@ const Cart = ({ cart, setCart, onClose }) => {
     totalCartItems += totalCount 
 })
 
+const deleteHandler = (itemId) => {
+  const updatedCart = cart?.filter((cartItem) => cartItem.id !== itemId);
+  setCart(updatedCart);
+  setDelNotification(!delNotification)
+};
+
+
+const [delNotification, setDelNotification] = useState(false)
+useEffect(() => {
+  const timeOut = setTimeout(() => {
+    setDelNotification(false)
+  }, 3000);
+
+  return () => {
+    clearTimeout(timeOut)
+  }
+}, [delNotification])
+
   return (
     <>
       <div className=" absolute h-full animate-[zoomIn_1s] overflow-hidden w-full top-0 right-0 bg-white p-5 z-20 shadow-md">
+      {delNotification && (
+        <p className='w-fit bg-red-500 animate-[slideInDown_0.5s] mb-[1rem] m-auto '>Item removed successfully</p>
+      )}
         <header className="w-full flex justify-around">
           <h2 className="text-[2rem] font-bold">Cart</h2>
           <p className="flex  ">
@@ -108,7 +124,6 @@ const Cart = ({ cart, setCart, onClose }) => {
                   <p>Total :</p>
                   <p> ${total}</p>
                 </div>
-                <p>Select payment mode</p>
               <Button className=" left-8 bg-[#380C65] text-white w-[10rem]" onClick={handleCheckOut}>
                 CheckOut
               </Button>
@@ -120,7 +135,6 @@ const Cart = ({ cart, setCart, onClose }) => {
         </Button>
       </div>
       {checkOut && <CheckOut checkOut={checkOut} total={total} setCheckOut={setCheckOut} totalCartItems={totalCartItems} />}
-      <Layout totalCartItems = {totalCartItems}/>
     </>
   );
 };

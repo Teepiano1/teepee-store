@@ -5,7 +5,7 @@ const ProductByCategory = () => {
   const { state } = useLocation();
   return (
     <PageProductsView
-      pageTitle={`${state}  | BEND DOWN SELECT`}
+      pageTitle={`${state}  | TEEPEE STORE`}
       pageApiUrl={`products/category/${state?.toLowerCase()}`}
     />
   );
