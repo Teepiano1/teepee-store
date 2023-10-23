@@ -4,10 +4,12 @@ import PageProductsView from "../../common/component/page-products-view";
 const ProductByCategory = () => {
   const { state } = useLocation();
   return (
-    <PageProductsView
-      pageTitle={`${state}  | TEEPEE STORE`}
-      pageApiUrl={`products/category/${state?.toLowerCase()}`}
-    />
+    <div>
+      <PageProductsView
+        pageTitle={`${state}  | TEEPEE STORE`}
+        pageApiUrl={`products/category/${state?.toLowerCase()}`}
+      />
+    </div>
   );
 };
 

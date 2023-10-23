@@ -13,7 +13,7 @@ const Dashboard = () => {
       ) : (
         <h1 className=" text-[2rem] m-[2rem]">Shop</h1>)}
       <PageProductsView
-        pageTitle="Dashboard | BEND DOWN SELECT"
+        pageTitle="Dashboard | TEEPEE STORE"
         pageApiUrl="products"
       />
     </div>

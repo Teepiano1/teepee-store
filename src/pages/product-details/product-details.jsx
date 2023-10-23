@@ -3,9 +3,7 @@ import useProductData from "../../hooks/useProductData";
 import { useParams } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
 import { Footer } from "antd/es/layout/layout";
-// import { Button } from "antd";
-// import useCartCount from "../../hooks/useCartCount";
-// import Cart from "../cart/Cart";
+
 
 const ProductDetails = () => {
   const { id } = useParams();
