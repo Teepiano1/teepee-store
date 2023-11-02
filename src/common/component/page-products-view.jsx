@@ -43,7 +43,7 @@ const PageProductsView = ({pageApiUrl, pageTitle}) => {
                   item.title.toLowerCase().includes(searchTerm.toLowerCase())
                 )
                   .map((item, index) => (
-                    <div key={index} className="w-[14rem] h-[18rem]  relative sm:max-w-[46%] md:h-[14rem] bg-white rounded-md">
+                    <div key={index} className="w-[14rem] animate-[fadeInRight_1s] h-[18rem]  relative sm:max-w-[46%] md:h-[14rem] bg-white rounded-md">
                       <p className=" absolute right-[0rem] text-white rounded-md bg-purple-600">-{item.discountPercentage}%</p>
                       <img src={item.thumbnail} onClick={() => navigate(`/single-product/${item.id}`)}
                         className="h-[50%] w-[14rem] rounded-md cursor-pointer" alt="" />

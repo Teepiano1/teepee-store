@@ -11,9 +11,9 @@ const Dashboard = () => {
       {loading ? (
         ""
       ) : (
-        <h1 className=" text-[2rem] m-[2rem]">Shop</h1>)}
+        <h1 className=" text-[1.5rem] m-[2rem]">New Arrivals</h1>)}
       <PageProductsView
-        pageTitle="Dashboard | TEEPEE STORE"
+        pageTitle="Shop | TEEPEE STORE"
         pageApiUrl="products"
       />
     </div>
