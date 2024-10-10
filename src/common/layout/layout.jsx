@@ -7,7 +7,7 @@ import menu from '../../assets/icons/menu.svg'
 
 
 const Layout = () => {
-  const { data } = useProductData('products/categories');
+  const { data } = useProductData('products/category-list');
   const { searchTerm, searchHandler } = useCartCount();
 
 const [asideVisible, setAsideVisible] = useState(false);
